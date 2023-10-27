@@ -52,13 +52,13 @@
             FontSize="16"
             Padding="0"
             VerticalAlignment="Center"/>
-        <Label 
+        <!--<Label 
             Grid.Column="1"
             Grid.Row="4"
             Content="Country"
             FontSize="16"
             Padding="0"
-            VerticalAlignment="Center"/>
+            VerticalAlignment="Center"/>-->
         <Label 
      Grid.Column="1"
      Grid.Row="5"
@@ -106,13 +106,13 @@
             Grid.ColumnSpan="2"
             Height="20"
             Margin="0 0 10 0"/>
-        <TextBox 
+        <!--<TextBox 
             Name="txtCountry"
             Grid.Column="2"
             Grid.Row="4" 
             Grid.ColumnSpan="2"
             Height="20"
-            Margin="0 0 10 0"/>
+            Margin="0 0 10 0"/>-->
         <TextBox 
     Name="txtTravellers"
     Grid.Column="2"
