@@ -1,0 +1,34 @@
+﻿using System.Collections.Generic;
+
+namespace TravelPalWpf
+{
+    public static class TravelManager //ska denna klassen ha en konstruktor
+    {
+        //Properties: en property som är en lista, den håller olika travel objekt
+
+        public static List<Travel> Travels { get; set; }
+
+
+        //en konstruktor som kallas när travel manager ska instansieras?
+        //public TravelManager()
+        //{
+        //    //skapar en instans av travels listan?
+        //    Travels = new List<Travel>();
+        //}
+
+        //en metod som lägger till ett Travel objekt i Travels Listan. 
+
+        public static void AddTravel(Travel travel)
+        {
+            Travels.Add(travel);
+
+        }
+
+        //en metod som tar bort ett travel objekt från Travels listan
+
+        public static void RemoveTravel(Travel travel)
+        {
+            Travels.Remove(travel);
+        }
+    }
+}

@@ -1,0 +1,56 @@
+﻿namespace TravelPalWpf
+{
+    public enum Country //behöver det vara public enum?
+    {
+        Afghanistan,
+        Albania,
+        Algeria,
+        Andorra,
+        Angola,
+        Argentina,
+        Armenia,
+        Australia,
+        Austria,
+        Bangladesh,
+        Belgium,
+        Brazil,
+        Canada,
+        Chile,
+        China,
+        Colombia,
+        Croatia,
+        CzechRepublic,
+        Denmark,
+        Egypt,
+        Finland,
+        France,
+        Germany,
+        Greece,
+        Hungary,
+        India,
+        Indonesia,
+        Ireland,
+        Italy,
+        Japan,
+        Kenya,
+        Mexico,
+        Netherlands,
+        NewZealand,
+        Nigeria,
+        Norway,
+        Pakistan,
+        Poland,
+        Portugal,
+        Romania,
+        Russia,
+        SouthAfrica,
+        Spain,
+        Sweden,
+        Switzerland,
+        UnitedKingdom,
+        UnitedStates
+
+    }
+
+}
+
