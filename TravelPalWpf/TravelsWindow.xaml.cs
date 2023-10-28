@@ -20,15 +20,15 @@ namespace TravelPalWpf
             //// Kolla vilken användare som är inloggad
             User signedInUser = (User)UserManager.SignedInUser;
 
+            //visar användarens användarnamn
+            txtLoggedInUser.Text = signedInUser.Username;
+
             //// Hämta dens resor
             List<Travel> Travels = signedInUser.Travels;
 
-            // List<Travel> userTravels = signedInUser.Travels;
 
 
             //// Lägg till dens resor i ListView:en
-
-
 
 
 
@@ -40,13 +40,6 @@ namespace TravelPalWpf
             }
 
 
-
-            //  lstTravels.ItemsSource = userTravels;
-
-
-            // lstTravels.ItemsSource = Travels;
-
-            // lstTravels.Items.Add(Travels);
 
 
 
@@ -70,9 +63,24 @@ namespace TravelPalWpf
 
         }
 
+        private void btnRemove_Click(object sender, RoutedEventArgs e)
+        {
 
+            //skapar en användare
+            User signedInUser = (User)UserManager.SignedInUser;
 
+            //hämtar det valde objektet från listboxen
+            ListBoxItem selectedItem = (ListBoxItem)lstTravels.SelectedItem;
 
+            Travel selectedTravel = (Travel)selectedItem.Tag;
+
+            //tar bort det valda objetet från användaren lista av resor
+            signedInUser.Travels.Remove(selectedTravel);
+
+            //tar bort objektet från listviewn
+            lstTravels.Items.Remove(selectedItem);
+
+        }
     }
 }
 
