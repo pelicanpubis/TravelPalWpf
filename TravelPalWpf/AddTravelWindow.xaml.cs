@@ -106,60 +106,38 @@ namespace TravelPalWpf
                 string country = selectedCountryItem.Content.ToString();
 
                 //hämtar text från combo box Kind of trip
-                ListViewItem selectedKindOfTripItem = (ListViewItem)cbKindOfTrip.SelectedItem;
-                string kindOfTrip = selectedKindOfTripItem.Content.ToString();
+                //ListViewItem selectedKindOfTripItem = (ListViewItem)cbKindOfTrip.SelectedItem;
+                //string kindOfTrip = selectedKindOfTripItem.Content.ToString();
 
-                // Lägg till den resan till den inloggade användarens resor
 
-                User signedInUser = (User)UserManager.SignedInUser;
+
                 //Skapar ett nytt travelobjekt
                 Travel newTravel = new Travel(city, Enum.Parse<Country>(country), int.Parse(travellers));
 
-                //lägger till travel i listan
-                Travels.Add(newTravel);
-                // signedInUser.Travels.Add(newTravel);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 // Lägg till den resan till den inloggade användarens resor
-
-                //  User signedInUser = (User)UserManager.SignedInUser;
-
-                //  signedInUser.Travels.Add(newTravel);
-
-
-
-                //Travels.Add(newTravel); //måste lägga till listan längst upp om det ska funka?
+                User signedInUser = (User)UserManager.SignedInUser;
 
 
 
 
 
-                //signedInUser.Travels.Add(newTravel);
 
-                // Travels.Add(newTravel);
 
-                // signedInUser.Travels.Add(newTravel);
+                //lägger till travel i listan
+                //  Travels.Add(newTravel);
+                signedInUser.Travels.Add(newTravel);
+
+
+
 
                 ////kanske ha en go back knapp till travel window?
 
 
 
                 TravelsWindow travelsWindow = new();
+
+
                 travelsWindow.Show();
                 Close();
 
@@ -167,6 +145,9 @@ namespace TravelPalWpf
 
 
             }
+
+
         }
+
     }
 }

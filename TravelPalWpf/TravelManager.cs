@@ -11,13 +11,6 @@ namespace TravelPalWpf
 
 
 
-        //en konstruktor som kallas när travel manager ska instansieras?
-        //public TravelManager()
-        //{
-        //    //skapar en instans av travels listan?
-        //    Travels = new List<Travel>();
-        //}
-
 
         //en metod som lägger till ett Travel objekt i Travels Listan. 
 

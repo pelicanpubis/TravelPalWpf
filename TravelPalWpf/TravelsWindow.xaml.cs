@@ -21,14 +21,27 @@ namespace TravelPalWpf
             User signedInUser = (User)UserManager.SignedInUser;
 
             //// Hämta dens resor
-            //List<Travel> Travels = signedInUser.Travels;
+            List<Travel> Travels = signedInUser.Travels;
 
-            List<Travel> userTravels = signedInUser.Travels;
+            // List<Travel> userTravels = signedInUser.Travels;
 
 
             //// Lägg till dens resor i ListView:en
 
-            lstTravels.ItemsSource = userTravels;
+
+
+
+
+            foreach (Travel travel in Travels)
+            {
+                ListViewItem item = new ListViewItem();
+                item.Content = travel.GetInfo();
+                lstTravels.Items.Add(item);
+            }
+
+
+
+            //  lstTravels.ItemsSource = userTravels;
 
 
             // lstTravels.ItemsSource = Travels;
@@ -56,6 +69,8 @@ namespace TravelPalWpf
             Close();
 
         }
+
+
 
 
     }

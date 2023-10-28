@@ -6,6 +6,10 @@
         public string Destination { get; set; }
         public Country Country { get; set; }
         public int Travellers { get; set; }
+
+        //    public KindOfTrip KindOfTrip { get; set; }
+
+
         //public List<PackingListItem> PackingList { get; set; }
 
         //public DateTime StartDate { get; set; } nice to have
@@ -21,17 +25,13 @@
             Destination = destination;
             Country = country;
             Travellers = travellers;
+
             // PackingList = packingList;
             //StartDate = startDate;
             //EndDate = endDate;
         }
 
-        //public Travel(string destination, Country country, int travellers)
-        //{
-        //    Destination = destination;
-        //    Country = country;
-        //    Travellers = travellers;
-        //}
+
 
 
 
