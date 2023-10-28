@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TravelPalWpf
+﻿namespace TravelPalWpf
 {
     public class Vacation : Travel
     {
@@ -11,8 +9,8 @@ namespace TravelPalWpf
 
         //konstruktor
 
-        public Vacation(string destination, Country country, int travellers, List<PackingListItem> packingList, bool allInclusive)
-            : base(destination, country, travellers, packingList)
+        public Vacation(string destination, Country country, int travellers, bool allInclusive)
+            : base(destination, country, travellers)
         {
             AllInclusive = allInclusive;
         }

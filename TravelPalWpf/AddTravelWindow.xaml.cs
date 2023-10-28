@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -9,7 +10,8 @@ namespace TravelPalWpf
     /// </summary>
     public partial class AddTravelWindow : Window
     {
-        static List<Travel> Travels = new List<Travel>(); //skapar en ny listA?
+        //static List<Travel> Travels = new List<Travel>(); //skapar en ny listA?
+        private List<Travel> Travels = new List<Travel>();
 
         public AddTravelWindow()
         {
@@ -83,8 +85,7 @@ namespace TravelPalWpf
         {
             // Kolla om alla fält är rätt ifyllda
 
-            if (txtCity.Text == "" && txtTravellers.Text == "") //ska man kanske ha eller operator?
-
+            if (txtCity.Text == "" && txtTravellers.Text == "")
             {
                 //Visa varningsmeddelande
                 MessageBox.Show("Please type in correct");  //message box är en class
@@ -93,15 +94,79 @@ namespace TravelPalWpf
             {
                 MessageBox.Show("Please select a country and a type of trip");
             }
-            // Om dom är det...
+            else
+            {
+                //// Skapa en ny Vaction / Worktrip
+                /// //hämtar text från text box
+                string city = txtCity.Text;
+                string travellers = txtTravellers.Text;
 
-            // Skapa en ny Vaction / Worktrip
-            // Lägg till den resan till den inloggade användarens resor
+                //hämtar text från combobox Country
+                ListViewItem selectedCountryItem = (ListViewItem)cbCountry.SelectedItem;
+                string country = selectedCountryItem.Content.ToString();
 
-            // Om dom INTE är det
-            // Visa en varningsruta
+                //hämtar text från combo box Kind of trip
+                ListViewItem selectedKindOfTripItem = (ListViewItem)cbKindOfTrip.SelectedItem;
+                string kindOfTrip = selectedKindOfTripItem.Content.ToString();
+
+                // Lägg till den resan till den inloggade användarens resor
+
+                User signedInUser = (User)UserManager.SignedInUser;
+                //Skapar ett nytt travelobjekt
+                Travel newTravel = new Travel(city, Enum.Parse<Country>(country), int.Parse(travellers));
+
+                //lägger till travel i listan
+                Travels.Add(newTravel);
+                // signedInUser.Travels.Add(newTravel);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                // Lägg till den resan till den inloggade användarens resor
+
+                //  User signedInUser = (User)UserManager.SignedInUser;
+
+                //  signedInUser.Travels.Add(newTravel);
+
+
+
+                //Travels.Add(newTravel); //måste lägga till listan längst upp om det ska funka?
+
+
+
+
+
+                //signedInUser.Travels.Add(newTravel);
+
+                // Travels.Add(newTravel);
+
+                // signedInUser.Travels.Add(newTravel);
+
+                ////kanske ha en go back knapp till travel window?
+
+
+
+                TravelsWindow travelsWindow = new();
+                travelsWindow.Show();
+                Close();
+
+
+
+
+            }
         }
     }
 }

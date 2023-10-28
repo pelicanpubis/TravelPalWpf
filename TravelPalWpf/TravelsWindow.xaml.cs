@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+
 
 namespace TravelPalWpf
 {
@@ -8,13 +10,37 @@ namespace TravelPalWpf
     /// </summary>
     public partial class TravelsWindow : Window
     {
+
+        // static List<Travel> Travels = new();
         public TravelsWindow()
         {
             InitializeComponent();
 
-            // Kolla vilken användare som är inloggad
-            // Hämta dens resor
-            // Lägg till dens resor i ListView:en
+
+            //// Kolla vilken användare som är inloggad
+            User signedInUser = (User)UserManager.SignedInUser;
+
+            //// Hämta dens resor
+            //List<Travel> Travels = signedInUser.Travels;
+
+            List<Travel> userTravels = signedInUser.Travels;
+
+
+            //// Lägg till dens resor i ListView:en
+
+            lstTravels.ItemsSource = userTravels;
+
+
+            // lstTravels.ItemsSource = Travels;
+
+            // lstTravels.Items.Add(Travels);
+
+
+
+
+
+
+
         }
 
         private void lstTravels_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -24,9 +50,17 @@ namespace TravelPalWpf
 
         private void btnAddTravel_Click(object sender, RoutedEventArgs e)
         {
+
             AddTravelWindow addTravelWindow = new();
             addTravelWindow.Show();
             Close();
+
         }
+
+
     }
 }
+
+
+
+

@@ -4,21 +4,13 @@
 
     public static class UserManager
     {
-        //properties
-        //public string string Username { get; set; }
-        //public string Password { get; set; }
-
-        //public Country Location { get; set; }
-
-        //Country IUser.Location { get; set; } //denna funkar bara?
-        //Country Location { get; set; }
 
         public static List<IUser> Users { get; private set; } = new()
              {
-            new User("test", "password"),
+            new User("a", "a"),
 
         };
-        public static IUser SignedInUser { get; private set; }
+        public static IUser? SignedInUser { get; private set; }
         // public Country Location { get; private set; } denna funkar inte?
 
         //konstruktor med en tom Users lista. Den sätter även signed user till null.

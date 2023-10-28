@@ -6,7 +6,7 @@ namespace TravelPalWpf
 
     public class User : IUser
     {
-        public string Username { get; set; } //eller string?
+        public string Username { get; set; } // required?
         public string Password { get; set; }
         public Country Location { get; set; }
         public List<Travel> Travels { get; set; }
@@ -15,10 +15,12 @@ namespace TravelPalWpf
         //när en instans av USER skapas så skapas en tom travelslista
         public User(string username, string password) //behövs denna?
         {
+
             Username = username;
             Password = password;
+            Travels = new List<Travel>(); //behöver man sätta listan i construktorn?
 
-            //Travels = new List<Travel>();
+
         }
 
         //denna metoden sätter usernaame?
@@ -27,6 +29,7 @@ namespace TravelPalWpf
             Username = username;
             Password = password;
             Location = location;
+            Travels = new List<Travel>();
         }
     }
 

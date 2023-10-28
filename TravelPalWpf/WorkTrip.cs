@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-
-namespace TravelPalWpf
+﻿namespace TravelPalWpf
 {
     public class WorkTrip : Travel
     {
         public string MeetingDetails { get; set; }
 
 
-        public WorkTrip(string destination, Country country, int travellers, List<PackingListItem> packingList, string meetingDetails)
-            : base(destination, country, travellers, packingList)
+        public WorkTrip(string destination, Country country, int travellers, string meetingDetails)
+            : base(destination, country, travellers)
         {
             MeetingDetails = meetingDetails;
         }

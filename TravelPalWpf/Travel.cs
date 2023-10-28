@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TravelPalWpf
+﻿namespace TravelPalWpf
 {
     public class Travel
     {
@@ -8,7 +6,7 @@ namespace TravelPalWpf
         public string Destination { get; set; }
         public Country Country { get; set; }
         public int Travellers { get; set; }
-        public List<PackingListItem> PackingList { get; set; }
+        //public List<PackingListItem> PackingList { get; set; }
 
         //public DateTime StartDate { get; set; } nice to have
         //public DateTime EndDate { get; set; } nice to have
@@ -17,15 +15,26 @@ namespace TravelPalWpf
 
 
         //Konstruktor  för att skapa och initialisera ett Travel-objekt, initaliserar propertiesarna.
-        public Travel(string destination, Country country, int travellers, List<PackingListItem> packingList)
+
+        public Travel(string destination, Country country, int travellers)
         {
             Destination = destination;
             Country = country;
             Travellers = travellers;
-            PackingList = packingList;
+            // PackingList = packingList;
             //StartDate = startDate;
             //EndDate = endDate;
         }
+
+        //public Travel(string destination, Country country, int travellers)
+        //{
+        //    Destination = destination;
+        //    Country = country;
+        //    Travellers = travellers;
+        //}
+
+
+
         //en metod som retunerar en sträng av info om resan
         public virtual string GetInfo()
         {

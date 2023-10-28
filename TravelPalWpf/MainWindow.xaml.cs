@@ -36,5 +36,14 @@ namespace TravelPalWpf
                 MessageBox.Show("Invalid username or password!", "Warning");
             }
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            RegisterWindow registerWindow = new();
+            registerWindow.Show();
+            Close();
+
+
+        }
     }
 }

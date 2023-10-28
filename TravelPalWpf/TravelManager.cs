@@ -6,7 +6,9 @@ namespace TravelPalWpf
     {
         //Properties: en property som är en lista, den håller olika travel objekt
 
-        public static List<Travel> Travels { get; set; }
+        public static List<Travel> Travels { get; set; } = new(); // sätta den till new?
+
+
 
 
         //en konstruktor som kallas när travel manager ska instansieras?
@@ -15,6 +17,7 @@ namespace TravelPalWpf
         //    //skapar en instans av travels listan?
         //    Travels = new List<Travel>();
         //}
+
 
         //en metod som lägger till ett Travel objekt i Travels Listan. 
 
