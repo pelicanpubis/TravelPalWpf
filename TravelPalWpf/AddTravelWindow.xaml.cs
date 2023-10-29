@@ -105,14 +105,14 @@ namespace TravelPalWpf
                 ListViewItem selectedCountryItem = (ListViewItem)cbCountry.SelectedItem;
                 string country = selectedCountryItem.Content.ToString();
 
-                //hämtar text från combo box Kind of trip
-                //ListViewItem selectedKindOfTripItem = (ListViewItem)cbKindOfTrip.SelectedItem;
-                //string kindOfTrip = selectedKindOfTripItem.Content.ToString();
+                //hämtar text från combo box kind of trip
+                ListViewItem selectedkindoftripitem = (ListViewItem)cbKindOfTrip.SelectedItem;
+                string kindoftrip = selectedkindoftripitem.Content.ToString();
 
 
 
                 //Skapar ett nytt travelobjekt
-                Travel newTravel = new Travel(city, Enum.Parse<Country>(country), int.Parse(travellers));
+                Travel newTravel = new Travel(city, Enum.Parse<Country>(country), int.Parse(travellers), Enum.Parse<KindOfTrip>(kindoftrip));
 
 
                 // Lägg till den resan till den inloggade användarens resor

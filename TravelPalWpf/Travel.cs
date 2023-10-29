@@ -7,7 +7,7 @@
         public Country Country { get; set; }
         public int Travellers { get; set; }
 
-        //    public KindOfTrip KindOfTrip { get; set; }
+        public KindOfTrip KindOfTrip { get; set; }
 
 
         //public List<PackingListItem> PackingList { get; set; }
@@ -20,11 +20,12 @@
 
         //Konstruktor  för att skapa och initialisera ett Travel-objekt, initaliserar propertiesarna.
 
-        public Travel(string destination, Country country, int travellers)
+        public Travel(string destination, Country country, int travellers, KindOfTrip kindOfTrip)
         {
             Destination = destination;
             Country = country;
             Travellers = travellers;
+            KindOfTrip = kindOfTrip;
 
             // PackingList = packingList;
             //StartDate = startDate;
@@ -40,7 +41,7 @@
         {
             return "Destination: " + Destination + "\n" +
                    "Country: " + Country + "\n" +
-                   "Number of Travellers: " + Travellers + "\n";
+                   "Number of Travellers: " + Travellers + "\n" + "Kind of Trip: " + KindOfTrip + "\n";
         }
 
 

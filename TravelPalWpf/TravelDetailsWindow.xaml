@@ -20,6 +20,8 @@
         <RadioButton Content="Work Trip" Name="rbWorkTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,140,0,0" />
         <RadioButton Content="Vacation" Name="rbVacation" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,140,0,0" />
 
+        <Label Content="Kind Of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,250,0,0" />
+        <TextBox Name="txtKindOfTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,250,0,0" />
 
         <!--<Label Content="Type of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,180,0,0" />-->
         <RadioButton Content="All Inclusive" Name="rbAllInclusive" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,180,0,0" />

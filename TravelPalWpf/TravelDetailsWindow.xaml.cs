@@ -21,6 +21,7 @@ namespace TravelPalWpf
             string destinationCountryText = "";
             string travellers = txtTravellers.Text;
             string city = txtCity.Text;
+            string kindOfTrip = "";
 
 
 
@@ -37,6 +38,7 @@ namespace TravelPalWpf
 
                 city = travel.Destination;
                 travellers = travel.Travellers.ToString();
+                kindOfTrip = travel.KindOfTrip.ToString();
 
                 destinationCountryText += travel.Country;
 
@@ -45,7 +47,7 @@ namespace TravelPalWpf
             txtCity.Text = city;
             txtDestinationCountry.Text = destinationCountryText;
             txtTravellers.Text = travellers;
-
+            txtKindOfTrip.Text = kindOfTrip;
 
         }
 

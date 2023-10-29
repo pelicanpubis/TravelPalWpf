@@ -5,8 +5,8 @@
         public string MeetingDetails { get; set; }
 
 
-        public WorkTrip(string destination, Country country, int travellers, string meetingDetails)
-            : base(destination, country, travellers)
+        public WorkTrip(string destination, Country country, int travellers, string meetingDetails, KindOfTrip kindOfTrip)
+            : base(destination, country, travellers, kindOfTrip)
         {
             MeetingDetails = meetingDetails;
         }
