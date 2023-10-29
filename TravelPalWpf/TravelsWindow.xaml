@@ -46,9 +46,9 @@
 
         <Button x:Name = "btnAddTravel" Grid.Column="4" Grid.Row="9" Width="140" Content="Add Travel" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnAddTravel_Click"/>
         <Button x:Name = "btnRemove" Grid.Column="4" Grid.Row="11" Width="140" Content="Remove" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnRemove_Click" />
-        <Button x:Name = "btnDetails"  Grid.Column="4" Grid.Row="10" Width="140" Content="Details" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" />
+        <Button x:Name = "btnDetails"  Grid.Column="4" Grid.Row="10" Width="140" Content="Show Details" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnDetails_Click" />
         <Button x:Name = "btnInfo" Grid.Column="4" Grid.Row="12" Width="140" Content="Info" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold"/>
-        <Button x:Name = "btnSignOut" Grid.Column="4" Grid.Row="13" Width="140" Content="Sign Out" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold"/>
+        <Button x:Name = "btnSignOut" Grid.Column="4" Grid.Row="13" Width="140" Content="Sign Out" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnSignOut_Click"/>
 
 
         <!--<ListView x:Name="lstTravels" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">

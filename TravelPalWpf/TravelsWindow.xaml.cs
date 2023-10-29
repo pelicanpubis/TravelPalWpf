@@ -81,6 +81,21 @@ namespace TravelPalWpf
             lstTravels.Items.Remove(selectedItem);
 
         }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+            TravelDetailsWindow travelDetailsWindow = new();
+            travelDetailsWindow.Show();
+            Close();
+
+        }
+
+        private void btnSignOut_Click(object sender, RoutedEventArgs e) //loggar inte riktigt ut, utan är mer en tillbaka knapp
+        {
+            MainWindow mainWindow = new();
+            mainWindow.Show();
+            Close();
+        }
     }
 }
 

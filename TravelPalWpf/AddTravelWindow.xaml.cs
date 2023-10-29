@@ -149,5 +149,15 @@ namespace TravelPalWpf
 
         }
 
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+
+            TravelsWindow travelsWindow = new();
+
+
+            travelsWindow.Show();
+            Close();
+
+        }
     }
 }
