@@ -8,17 +8,17 @@
                Title="Travel Details Window" Height="400" Width="550" Background="LightBlue">
     <Grid>
         <Label Content="City:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" />
-        <TextBox Name="txtCity" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,20,0,0" />
+        <TextBox Name="txtCity" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,20,0,0" IsReadOnly="True"/>
 
         <Label Content="Destination Country:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,60,0,0" />
-        <TextBox Name="txtDestinationCountry" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,60,0,0" />
+        <TextBox Name="txtDestinationCountry" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,60,0,0" IsReadOnly="True"/>
 
         <Label Content="Number of Travelers:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,100,0,0" />
-        <TextBox Name="txtTravellers" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,100,0,0" />
+        <TextBox Name="txtTravellers" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,100,0,0" IsReadOnly ="True"/>
 
 
         <Label Content="Kind Of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150,0,0" />
-        <TextBox Name="txtKindOfTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,150,0,0" />
+        <TextBox Name="txtKindOfTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,150,0,0" IsReadOnly="True"/>
 
         
 

@@ -22,7 +22,7 @@
         //metod som ska returnera en sträng om work trip
         public override string GetInfo()
         {
-            return "";
+            return $"{Country}";
         }
     }
 }

@@ -90,6 +90,8 @@ namespace TravelPalWpf
                 /// //hämtar text från text box
                 string city = txtCity.Text;
                 string travellers = txtTravellers.Text;
+                bool allInclusive = false;
+                string meetingDetails = txtMeetingDetails.Text;
 
                 //hämtar text från combobox Country
                 Country selectedCountryItem = (Country)cbCountry.SelectedItem;
@@ -100,53 +102,75 @@ namespace TravelPalWpf
                 string kindoftrip = selectedkindoftripitem.ToString();
 
 
+                // ComboBoxItem? selectedItem = (ComboBoxItem)cbKindOfTrip.SelectedItem;
 
 
                 // HAr vi valt Vacation eller work trip?
+                // Kolla vilket element som är selectat i ComboBoxen
 
-                // Om vi har valt vacation -> new Vacation();
+                if (kindoftrip != null && selectedkindoftripitem.ToString() == "Vacation")
+
+                {
+                    // Om vi har valt vacation -> new Vacation(); gör två stycke, om en är all inclusive sätt den till true, om inte sätt den till false
+                    Vacation newVacation = new Vacation(city, Enum.Parse<Country>(country), int.Parse(travellers), allInclusive, Enum.Parse<KindOfTrip>(kindoftrip));
+
+                    txtCity.Text = city;
+                    txtTravellers.Text = travellers;
+                    cbKindOfTrip.Text = kindoftrip;
+
+
+                    User user = UserManager.SignedInUser as User;
+
+                    user.Travels.Add(newVacation);
+                }
+
                 // Om vi har valt work trip -> new WorkTrip();
 
-                // Lägg till vår nya vacation / work trip till den inloggade userns resor
+                else if (kindoftrip != null && selectedkindoftripitem.ToString() == "WorkTrip")
+                {
+                    WorkTrip newWorktrip = new WorkTrip(city, Enum.Parse<Country>(country), int.Parse(travellers), meetingDetails, Enum.Parse<KindOfTrip>(kindoftrip));
+                    txtCity.Text = city;
+                    txtTravellers.Text = travellers;
+                    cbKindOfTrip.Text = kindoftrip;
 
+                    User user = UserManager.SignedInUser as User;
 
-                //Skapar ett nytt travelobjekt
-                Travel newTravel = new Travel(city, Enum.Parse<Country>(country), int.Parse(travellers), Enum.Parse<KindOfTrip>(kindoftrip));
-
-
-                // Lägg till den resan till den inloggade användarens resor
-                User signedInUser = (User)UserManager.SignedInUser;
-
-
-
-
-
-
-
-                //lägger till travel i listan
-                //  Travels.Add(newTravel);
-                signedInUser.Travels.Add(newTravel);
-
-
-
-
-                ////kanske ha en go back knapp till travel window?
-
-
-
-                TravelsWindow travelsWindow = new();
-
-
-                travelsWindow.Show();
-                Close();
-
-
-
+                    user.Travels.Add(newWorktrip);
+                }
 
             }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+            //signedInUser.Travels.Add(newTravel);
+
+
+
+
+            TravelsWindow travelsWindow = new();
+            travelsWindow.Show();
+            Close();
+
+
+
+
         }
+
+
+
+
+
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
@@ -176,6 +200,7 @@ namespace TravelPalWpf
         }
     }
 }
+
 
 
 
