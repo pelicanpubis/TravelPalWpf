@@ -44,11 +44,12 @@ namespace TravelPalWpf
             Country selectedCountryItem = (Country)cbCountry.SelectedItem;
 
 
+            //kollar med validateuser metoden om username är taget
             if (!UserManager.ValidateUsername(username))
             {
-                // Show a warning message for a taken username
+                // Visar varningsrute om användar namn inte är taget
                 MessageBox.Show("Username is already taken. Please choose a different username.");
-                return; // Exit the method, don't proceed with registration
+                return;
             }
 
             // Checka alla inputs

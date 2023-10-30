@@ -123,6 +123,23 @@ namespace TravelPalWpf
             mainWindow.Show();
             Close();
         }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+
+            string travelPalInfo = @"
+- Add, remove, and view trip details.
+- Easily identify all-inclusive vacations.
+- Organize work trips with meeting details.
+";
+            MessageBox.Show(travelPalInfo);
+
+
+            //MessageBox.Show("Travel Pal: Your Travel Manager\r\n\r\nAdd, remove, and view trip details.\r\nEasily identify all-inclusive vacations.\r\nOrganize work trips with meeting details.");
+
+
+
+        }
     }
 }
 
