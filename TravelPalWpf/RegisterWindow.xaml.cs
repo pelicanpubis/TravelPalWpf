@@ -21,14 +21,8 @@ namespace TravelPalWpf
 
             {
 
-                ///* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
-                //ListViewItem item = new(); //gör en ny klass //lagt till en
-                //item.Content = country.ToString(); //content är det som kommer att synas i combo boxen
-                //item.Tag = country;   //tag är en property med setter och getter
 
                 cbCountry.Items.Add(country);
-
-
 
 
             }
@@ -48,6 +42,14 @@ namespace TravelPalWpf
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Password.Trim();
             Country selectedCountryItem = (Country)cbCountry.SelectedItem;
+
+
+            if (!UserManager.ValidateUsername(username))
+            {
+                // Show a warning message for a taken username
+                MessageBox.Show("Username is already taken. Please choose a different username.");
+                return; // Exit the method, don't proceed with registration
+            }
 
             // Checka alla inputs
             if (username == "")

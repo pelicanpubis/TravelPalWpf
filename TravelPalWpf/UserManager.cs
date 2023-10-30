@@ -37,7 +37,10 @@
                 return newClient;
             }
 
+
+
             return null;
+
         }
 
 
@@ -64,7 +67,7 @@
 
 
         //metod som validerar användarnamn
-        private static bool ValidateUsername(string username)
+        public static bool ValidateUsername(string username)
         {
             bool isValidUsername = true;
 
