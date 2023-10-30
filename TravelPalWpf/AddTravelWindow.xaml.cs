@@ -90,11 +90,14 @@ namespace TravelPalWpf
                 /// //hämtar text från text box
                 string city = txtCity.Text;
                 string travellers = txtTravellers.Text;
-                bool allInclusive = false;
                 string meetingDetails = txtMeetingDetails.Text;
+                //bool allInclusive = true;
+                bool allInclusive = chkAllInclusive.IsChecked == true;
+
+
 
                 //hämtar text från combobox Country
-                Country selectedCountryItem = (Country)cbCountry.SelectedItem;
+                Country selectedCountryItem = (Country)cbCountry.SelectedItem;  //breakar här
                 string country = selectedCountryItem.ToString();
 
                 //hämtar text från combo box kind of trip
@@ -108,15 +111,21 @@ namespace TravelPalWpf
                 // HAr vi valt Vacation eller work trip?
                 // Kolla vilket element som är selectat i ComboBoxen
 
+
                 if (kindoftrip != null && selectedkindoftripitem.ToString() == "Vacation")
 
                 {
+
+
+
+
                     // Om vi har valt vacation -> new Vacation(); gör två stycke, om en är all inclusive sätt den till true, om inte sätt den till false
-                    Vacation newVacation = new Vacation(city, Enum.Parse<Country>(country), int.Parse(travellers), allInclusive, Enum.Parse<KindOfTrip>(kindoftrip));
+                    Vacation newVacation = new Vacation(city, Enum.Parse<Country>(country), int.Parse(travellers), allInclusive, Enum.Parse<KindOfTrip>(kindoftrip), meetingDetails);
 
                     txtCity.Text = city;
                     txtTravellers.Text = travellers;
                     cbKindOfTrip.Text = kindoftrip;
+
 
 
                     User user = UserManager.SignedInUser as User;
@@ -191,11 +200,14 @@ namespace TravelPalWpf
             {
                 chkAllInclusive.Visibility = Visibility.Hidden;
                 txtMeetingDetails.Visibility = Visibility.Visible;
+                lblMeetingDetails.Visibility = Visibility.Visible;
             }
             else if (selectedItem == KindOfTrip.Vacation)
             {
                 chkAllInclusive.Visibility = Visibility.Visible;
-                txtMeetingDetails.Visibility = Visibility.Hidden;
+                txtMeetingDetails.Visibility = Visibility.Collapsed;
+                lblMeetingDetails.Visibility = Visibility.Collapsed;
+
             }
         }
     }

@@ -22,7 +22,44 @@
 
         
 
-        <Button Content="Back" Name="btnBack" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="30" Margin="20,310,0,0" Click="btnBack_Click"  />
+        <Button 
+                Content="Back" Name="btnBack" 
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Width="100"
+                Height="30"
+                Margin="20,310,0,0" 
+                Click="btnBack_Click"  />
+        <Label 
+            Name="lblMeetingDetails"
+            Content="Meeting Details:"
+               VerticalAlignment="Top"
+               HorizontalAlignment="Left"
+               Margin="20,200,0,0"
+               Visibility="Hidden" />
+        <TextBox Name="txtMeetingDetails"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Left"
+                 Width="400" 
+                 Height="80" 
+                 Margin="180,200,0,0"
+                 IsReadOnly="True"
+                 TextWrapping="Wrap"
+                  
+                 Visibility="Hidden"/>
+
+        <CheckBox 
+Name="chkAllInclusive"
+Grid.Column="5"
+Grid.Row="6"
+Content="All Inclusive"
+HorizontalAlignment="Left"
+Margin="400,152,0,0"
+VerticalAlignment="Top" Checked="chkAllInclusive_Checked"
+            Visibility="Hidden"
+        />
+
+
 
 
 

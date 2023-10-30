@@ -67,31 +67,53 @@ namespace TravelPalWpf
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
 
-            //skapar en användare
-            User signedInUser = (User)UserManager.SignedInUser;
+            //om användaren inte har valt en resa att radera men inte valt någonting
+            if (lstTravels != null)
 
-            //hämtar det valde objektet från listboxen
-            ListBoxItem selectedItem = (ListBoxItem)lstTravels.SelectedItem;
+            {
+                ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
+                if (selectedItem != null)
+                {
+                    Travel selectedTravel = (Travel)selectedItem.Tag;
 
-            Travel selectedTravel = (Travel)selectedItem.Tag;
+                    //skapar användare
+                    User signedInUser = UserManager.SignedInUser as User;
+                    //tar bort användarens resa från reselistan
+                    signedInUser.Travels.Remove(selectedTravel);
+                    //tar bort resan från listview
+                    lstTravels.Items.Remove(selectedItem);
+                }
 
-            //tar bort det valda objetet från användaren lista av resor
-            signedInUser.Travels.Remove(selectedTravel);
+                else
+                {
 
-            //tar bort objektet från listviewn
-            lstTravels.Items.Remove(selectedItem);
 
+                    MessageBox.Show("Please select a travel from the list before clicking 'Remove'.");
+
+                }
+
+            }
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
-            Travel? selectedTravel = selectedItem!.Tag as Travel;
+
+            if (lstTravels.SelectedItem != null)
+            {
+                ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
+                Travel? selectedTravel = selectedItem!.Tag as Travel;
+                TravelDetailsWindow travelDetailsWindow = new(selectedTravel);
+                travelDetailsWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Please select a travel from the list before clicking 'Show Details'.");
+            }
 
 
-            TravelDetailsWindow travelDetailsWindow = new(selectedTravel);
-            travelDetailsWindow.Show();
-            Close();
+
+
 
         }
 

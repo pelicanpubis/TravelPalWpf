@@ -12,39 +12,41 @@ namespace TravelPalWpf
             InitializeComponent();
 
 
-
-
-
-            // Initialize the variables
-            //string destinationCountryText = "";
-            //string travellers = txtTravellers.Text;
-            //string city = txtCity.Text;
-            //string kindOfTrip = "";
-
-
-
-            //// Check which user is logged in
-            //User signedInUser = (User)UserManager.SignedInUser;
-
-            ////// Hämta dens resor
-            //List<Travel> Travels = signedInUser.Travels;
-
-            ////lägger till användarens resor i list view
-            //foreach (Travel travel in Travels)
-            //{
-            //    ListViewItem item = new ListViewItem();
-
-            //    city = travel.Destination;
-            //    travellers = travel.Travellers.ToString();
-            //    kindOfTrip = travel.KindOfTrip.ToString();
-
-            //    destinationCountryText = travel.Country.ToString();
-            //}
-
             txtCity.Text = travelToShow.Destination;
+            txtMeetingDetails.Text = travelToShow.MeetingDetails;
             txtDestinationCountry.Text = travelToShow.Country.ToString();
             txtTravellers.Text = travelToShow.Travellers.ToString();
             txtKindOfTrip.Text = travelToShow.GetType() == typeof(Vacation) ? "Vacation" : "Work Trip";
+
+            if (txtKindOfTrip.Text == "Work Trip")
+            {
+                txtMeetingDetails.Visibility = Visibility.Visible;
+                lblMeetingDetails.Visibility = Visibility.Visible;
+
+
+            }
+            else
+            {
+                txtMeetingDetails.Visibility = Visibility.Hidden;
+
+            }
+
+            if (txtKindOfTrip.Text == "Vacation")
+            {
+                chkAllInclusive.Visibility = Visibility.Visible;
+
+
+                //checkar om checkbox är true
+                if (travelToShow is Vacation vacation && vacation.AllInclusive)
+                {
+                    chkAllInclusive.IsChecked = true;
+                }
+            }
+            else
+            {
+                chkAllInclusive.Visibility = Visibility.Hidden;
+            }
+
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
@@ -54,6 +56,12 @@ namespace TravelPalWpf
 
             travelsWindow.Show();
             Close();
+        }
+
+        private void chkAllInclusive_Checked(object sender, RoutedEventArgs e)
+        {
+
+
         }
     }
 }

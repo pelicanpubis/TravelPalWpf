@@ -6,7 +6,7 @@
 
 
         public WorkTrip(string destination, Country country, int travellers, string meetingDetails, KindOfTrip kindOfTrip)
-            : base(destination, country, travellers, kindOfTrip)
+            : base(destination, country, travellers, kindOfTrip, meetingDetails)
         {
             MeetingDetails = meetingDetails;
         }

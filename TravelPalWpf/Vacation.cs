@@ -9,8 +9,8 @@
 
         //konstruktor
 
-        public Vacation(string destination, Country country, int travellers, bool allInclusive, KindOfTrip kindOfTrip)
-            : base(destination, country, travellers, kindOfTrip)
+        public Vacation(string destination, Country country, int travellers, bool allInclusive, KindOfTrip kindOfTrip, string meetingDetails)
+            : base(destination, country, travellers, kindOfTrip, meetingDetails)
         {
             AllInclusive = allInclusive;
         }

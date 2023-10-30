@@ -9,6 +9,8 @@
 
         public KindOfTrip KindOfTrip { get; set; }
 
+        public string MeetingDetails { get; set; }
+
 
         //public List<PackingListItem> PackingList { get; set; }
 
@@ -20,12 +22,13 @@
 
         //Konstruktor  för att skapa och initialisera ett Travel-objekt, initaliserar propertiesarna.
 
-        public Travel(string destination, Country country, int travellers, KindOfTrip kindOfTrip)
+        public Travel(string destination, Country country, int travellers, KindOfTrip kindOfTrip, string meetingDetails)
         {
             Destination = destination;
             Country = country;
             Travellers = travellers;
             KindOfTrip = kindOfTrip;
+            MeetingDetails = meetingDetails;
 
             // PackingList = packingList;
             //StartDate = startDate;
