@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -11,7 +10,7 @@ namespace TravelPalWpf
     public partial class AddTravelWindow : Window
     {
         //static List<Travel> Travels = new List<Travel>(); //skapar en ny listA?
-        private List<Travel> Travels = new List<Travel>();
+        //  private List<Travel> Travels = new List<Travel>();
 
         public AddTravelWindow()
         {
@@ -27,12 +26,12 @@ namespace TravelPalWpf
 
             {
 
-                /* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
-                ListViewItem item = new(); //gör en ny klass //lagt till en
-                item.Content = country.ToString(); //content är det som kommer att synas i combo boxen
-                item.Tag = country;   //tag är en property med setter och getter
+                ///* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
+                //ListViewItem item = new(); //gör en ny klass //lagt till en
+                //item.Content = country.ToString(); //content är det som kommer att synas i combo boxen
+                //item.Tag = country;   //tag är en property med setter och getter
 
-                cbCountry.Items.Add(item);
+                cbCountry.Items.Add(country);
 
 
 
@@ -47,31 +46,22 @@ namespace TravelPalWpf
             //Lägg till i comboboxem
             //Loopa över alla enums
 
-            cbKindOfTrip.Items.Add("- - Select Trip - - "); //lägger till en label i comboboxen
             cbKindOfTrip.SelectedIndex = 0;
 
 
             foreach (KindOfTrip kindOfTrip in System.Enum.GetValues(typeof(KindOfTrip)))  //loopar genon enums
-
             {
+                cbKindOfTrip.Items.Add(kindOfTrip);
 
-                /* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
-                ListViewItem item = new(); //gör en ny klass //lagt till en
-                item.Content = kindOfTrip.ToString(); //content är det som kommer att synas i combo boxen
-                item.Tag = kindOfTrip;   //tag är en property med setter och getter
+                ///* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
+                //ListViewItem item = new(); //gör en ny klass //lagt till en
+                //item.Content = kindOfTrip.ToString(); //content är det som kommer att synas i combo boxen
+                //item.Tag = kindOfTrip;   //tag är en property med setter och getter
 
-                cbKindOfTrip.Items.Add(item);
-
-
-
-
+                //cbKindOfTrip.Items.Add(item);
             }
 
-
-
             cbKindOfTrip.SelectedIndex = 0;
-
-
         }
 
 
@@ -102,13 +92,22 @@ namespace TravelPalWpf
                 string travellers = txtTravellers.Text;
 
                 //hämtar text från combobox Country
-                ListViewItem selectedCountryItem = (ListViewItem)cbCountry.SelectedItem;
-                string country = selectedCountryItem.Content.ToString();
+                Country selectedCountryItem = (Country)cbCountry.SelectedItem;
+                string country = selectedCountryItem.ToString();
 
                 //hämtar text från combo box kind of trip
-                ListViewItem selectedkindoftripitem = (ListViewItem)cbKindOfTrip.SelectedItem;
-                string kindoftrip = selectedkindoftripitem.Content.ToString();
+                KindOfTrip selectedkindoftripitem = (KindOfTrip)cbKindOfTrip.SelectedItem;
+                string kindoftrip = selectedkindoftripitem.ToString();
 
+
+
+
+                // HAr vi valt Vacation eller work trip?
+
+                // Om vi har valt vacation -> new Vacation();
+                // Om vi har valt work trip -> new WorkTrip();
+
+                // Lägg till vår nya vacation / work trip till den inloggade userns resor
 
 
                 //Skapar ett nytt travelobjekt
@@ -159,5 +158,24 @@ namespace TravelPalWpf
             Close();
 
         }
+
+        private void cbKindOfTrip_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = (KindOfTrip)cbKindOfTrip.SelectedItem;
+
+            if (selectedItem == KindOfTrip.WorkTrip)
+            {
+                chkAllInclusive.Visibility = Visibility.Hidden;
+                txtMeetingDetails.Visibility = Visibility.Visible;
+            }
+            else if (selectedItem == KindOfTrip.Vacation)
+            {
+                chkAllInclusive.Visibility = Visibility.Visible;
+                txtMeetingDetails.Visibility = Visibility.Hidden;
+            }
+        }
     }
 }
+
+
+

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows;
 
 namespace TravelPalWpf
 {
@@ -9,7 +7,7 @@ namespace TravelPalWpf
     /// </summary>
     public partial class TravelDetailsWindow : Window
     {
-        public TravelDetailsWindow()
+        public TravelDetailsWindow(Travel travelToShow)
         {
             InitializeComponent();
 
@@ -18,37 +16,35 @@ namespace TravelPalWpf
 
 
             // Initialize the variables
-            string destinationCountryText = "";
-            string travellers = txtTravellers.Text;
-            string city = txtCity.Text;
-            string kindOfTrip = "";
+            //string destinationCountryText = "";
+            //string travellers = txtTravellers.Text;
+            //string city = txtCity.Text;
+            //string kindOfTrip = "";
 
 
 
-            // Check which user is logged in
-            User signedInUser = (User)UserManager.SignedInUser;
+            //// Check which user is logged in
+            //User signedInUser = (User)UserManager.SignedInUser;
 
-            //// Hämta dens resor
-            List<Travel> Travels = signedInUser.Travels;
+            ////// Hämta dens resor
+            //List<Travel> Travels = signedInUser.Travels;
 
-            //lägger till användarens resor i list view
-            foreach (Travel travel in Travels)
-            {
-                ListViewItem item = new ListViewItem();
+            ////lägger till användarens resor i list view
+            //foreach (Travel travel in Travels)
+            //{
+            //    ListViewItem item = new ListViewItem();
 
-                city = travel.Destination;
-                travellers = travel.Travellers.ToString();
-                kindOfTrip = travel.KindOfTrip.ToString();
+            //    city = travel.Destination;
+            //    travellers = travel.Travellers.ToString();
+            //    kindOfTrip = travel.KindOfTrip.ToString();
 
-                destinationCountryText += travel.Country;
+            //    destinationCountryText = travel.Country.ToString();
+            //}
 
-            }
-
-            txtCity.Text = city;
-            txtDestinationCountry.Text = destinationCountryText;
-            txtTravellers.Text = travellers;
-            txtKindOfTrip.Text = kindOfTrip;
-
+            txtCity.Text = travelToShow.Destination;
+            txtDestinationCountry.Text = travelToShow.Country.ToString();
+            txtTravellers.Text = travelToShow.Travellers.ToString();
+            txtKindOfTrip.Text = travelToShow.GetType() == typeof(Vacation) ? "Vacation" : "Work Trip";
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)

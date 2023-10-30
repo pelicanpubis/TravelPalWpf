@@ -7,7 +7,8 @@
 
         public static List<IUser> Users { get; private set; } = new()
              {
-            new User("a", "a"),
+            new User("a", "a",Country.Sweden),
+            new Admin("Admin", "password",Country.Afghanistan)
 
         };
         public static IUser? SignedInUser { get; private set; }
@@ -25,11 +26,11 @@
         //    return;
         //}
 
-        public static User? RegisterUser(string username, string password)
+        public static User? RegisterUser(string username, string password, Country country)
         {
             if (ValidateUsername(username))
             {
-                User newClient = new(username, password);
+                User newClient = new(username, password, country);
 
                 Users.Add(newClient);
 

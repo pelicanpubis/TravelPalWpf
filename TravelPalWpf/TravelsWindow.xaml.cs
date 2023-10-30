@@ -36,6 +36,7 @@ namespace TravelPalWpf
             {
                 ListViewItem item = new ListViewItem();
                 item.Content = travel.GetInfo();
+                item.Tag = travel;
                 lstTravels.Items.Add(item);
             }
 
@@ -84,7 +85,11 @@ namespace TravelPalWpf
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-            TravelDetailsWindow travelDetailsWindow = new();
+            ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
+            Travel? selectedTravel = selectedItem!.Tag as Travel;
+
+
+            TravelDetailsWindow travelDetailsWindow = new(selectedTravel);
             travelDetailsWindow.Show();
             Close();
 

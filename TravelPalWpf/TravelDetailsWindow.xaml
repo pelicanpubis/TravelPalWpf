@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPalWpf"
         mc:Ignorable="d"
-               Title="Travel Details Window" Height="400" Width="550" Background="PeachPuff">
+               Title="Travel Details Window" Height="400" Width="550" Background="LightBlue">
     <Grid>
         <Label Content="City:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,20,0,0" />
         <TextBox Name="txtCity" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,20,0,0" />
@@ -16,17 +16,11 @@
         <Label Content="Number of Travelers:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,100,0,0" />
         <TextBox Name="txtTravellers" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,100,0,0" />
 
-        <Label Content="Type of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,140,0,0" />
-        <RadioButton Content="Work Trip" Name="rbWorkTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,140,0,0" />
-        <RadioButton Content="Vacation" Name="rbVacation" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,140,0,0" />
 
-        <Label Content="Kind Of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,250,0,0" />
-        <TextBox Name="txtKindOfTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,250,0,0" />
+        <Label Content="Kind Of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,150,0,0" />
+        <TextBox Name="txtKindOfTrip" VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="180,150,0,0" />
 
-        <!--<Label Content="Type of Trip:" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="20,180,0,0" />-->
-        <RadioButton Content="All Inclusive" Name="rbAllInclusive" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="180,180,0,0" />
-        <RadioButton Content="Meeting Details" Name="rbMeetingDetails" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="270,180,0,0" />
-
+        
 
         <Button Content="Back" Name="btnBack" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100" Height="30" Margin="20,310,0,0" Click="btnBack_Click"  />
 

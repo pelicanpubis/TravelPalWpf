@@ -51,7 +51,21 @@
             Text="Password"
             Foreground="White"
             FontWeight="Bold"/>
-       
+        <ComboBox 
+       Name="cbCountry"
+       Grid.Column="1"
+       Grid.Row="6"
+       Height="20"/>
+
+
+        <Label 
+            Grid.Column="1"
+            Grid.Row="5"
+            Content="Destination:"
+            FontSize="16"
+            Padding="0"
+            VerticalAlignment="Center"
+            FontWeight="Bold"/>
 
         <TextBlock
             Name="warnUsername"
@@ -76,12 +90,12 @@
             Grid.Row="3" 
             Height="20" 
             Margin="0 0 10 0"/>
-        <TextBox
+        <PasswordBox
             Name="txtPassword"
             Grid.Column="2"
             Grid.Row="3"
             Height="20"
-            ToolTip="Enter your last name"/>
+            ToolTip="Enter your password"/>
   
 
 
