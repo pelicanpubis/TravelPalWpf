@@ -36,6 +36,11 @@
             //EndDate = endDate;
         }
 
+        public Travel()
+        {
+
+        }
+
 
 
 

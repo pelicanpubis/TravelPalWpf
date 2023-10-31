@@ -73,6 +73,12 @@ namespace TravelPalWpf
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
+
+
+
+
+
+
             // Kolla om alla fält är rätt ifyllda
 
             if (txtCity.Text == "" && txtTravellers.Text == "")
@@ -112,6 +118,8 @@ namespace TravelPalWpf
                 // Kolla vilket element som är selectat i ComboBoxen
 
 
+
+
                 if (kindoftrip != null && selectedkindoftripitem.ToString() == "Vacation")
 
                 {
@@ -128,9 +136,30 @@ namespace TravelPalWpf
 
 
 
-                    User user = UserManager.SignedInUser as User;
+                    //User user = UserManager.SignedInUser as User;
 
-                    user.Travels.Add(newVacation);
+                    // user.Travels.Add(newVacation);
+
+
+                    if (UserManager.SignedInUser is User signedInUser)
+
+                    {
+
+                        signedInUser.Travels.Add(newVacation);
+                    }
+
+                    else if (UserManager.SignedInUser is Admin signedInAdmin)
+
+
+                    {
+
+                        signedInAdmin.Travels.Add(newVacation);
+
+                    }
+
+
+
+
                 }
 
                 // Om vi har valt work trip -> new WorkTrip();
@@ -142,36 +171,41 @@ namespace TravelPalWpf
                     txtTravellers.Text = travellers;
                     cbKindOfTrip.Text = kindoftrip;
 
-                    User user = UserManager.SignedInUser as User;
 
-                    user.Travels.Add(newWorktrip);
+
+
+                    //User user = UserManager.SignedInUser as User;
+
+                    //user.Travels.Add(newWorktrip);
+
+
+
+                    if (UserManager.SignedInUser is User signedInUser)
+
+                    {
+
+                        signedInUser.Travels.Add(newWorktrip);
+                    }
+
+                    else if (UserManager.SignedInUser is Admin signedInAdmin)
+
+
+                    {
+
+                        signedInAdmin.Travels.Add(newWorktrip);
+
+                    }
+
+
+
                 }
 
             }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-            //signedInUser.Travels.Add(newTravel);
-
-
-
-
             TravelsWindow travelsWindow = new();
             travelsWindow.Show();
             Close();
-
-
 
 
         }

@@ -6,40 +6,128 @@
     {
 
         public static List<IUser> Users { get; private set; } = new()
-             {
-            new User("user", "password",Country.Sweden),
-            new Admin("admin", "password",Country.Afghanistan)
-
-        };
-        public static IUser? SignedInUser { get; private set; }
-        // public Country Location { get; private set; } denna funkar inte?
-
-        //konstruktor med en tom Users lista. Den sätter även signed user till null.
-        //public static UserManager()
-        //{
-        //    Users = new List<IUser>();
-        //    SignedInUser = null;
-        //}
-
-        //public void IUser(string username, string password, Country location) //från íuser men behövs den?
-        //{
-        //    return;
-        //}
-
-        public static User? RegisterUser(string username, string password, Country country)
         {
-            if (ValidateUsername(username))
+            //vi kallar på en tom konstruktor så att vi kan bygga vår egna user
+            
+            new Admin
             {
-                User newClient = new(username, password, country);
+                Password = "password",
+                Username = "admin",
+                Location = Country.France,
+                Travels = new List<Travel>()
+                {
 
-                Users.Add(newClient);
+                new WorkTrip
+            {
+                Destination = "Buenos Aires",
+                Country = Country.Argentina,
+                Travellers = 1,
+                KindOfTrip = KindOfTrip.WorkTrip,
+                MeetingDetails = "Work in Argentina"
 
-                return newClient;
+
+                },
+
+                new Vacation
+            {
+                Destination = "Nice",
+                Country = Country.France,
+                Travellers = 2,
+                KindOfTrip = KindOfTrip.Vacation,
+                AllInclusive = true
             }
 
 
+            },
+
+
+
+
+            },
+            new User()
+             {
+                Username = "user",
+                Password= "password",
+                Location = Country.Sweden,
+                Travels = new List<Travel>()
+                {
+
+
+                new WorkTrip ()
+                {
+                    Destination = "Kabul",
+                    Country = Country.Afghanistan,
+                    Travellers = 1,
+                    KindOfTrip = KindOfTrip.WorkTrip,
+                    MeetingDetails = "sa,sd"
+
+                },
+                new Vacation()
+                {
+                    Destination="Kosovo",
+                    Country = Country.Albania,
+                    Travellers = 1,
+                    KindOfTrip= KindOfTrip.Vacation,
+                    AllInclusive = true,
+
+                }
+
+                }
+
+            }
+
+        };
+
+
+
+
+
+
+
+
+
+
+
+        //new Admin("admin", "password",Country.Afghanistan)
+
+
+        public static IUser? SignedInUser { get; private set; }
+
+        //denna metoden registrerar en ny user
+        public static User? RegisterUser(string username, string password, Country country)
+        {
+
+            //kontrollerar om det nya användar namnet är ''valid''
+            if (ValidateUsername(username))
+            {
+                //om det är valid så skapas en ny user objekt och initialiserar dens properties
+                User newUser = new User
+                {
+                    Username = username,
+                    Password = password,
+                    Location = country,
+                    Travels = new List<Travel>()
+                };
+                //lägger till den nya user i users listan
+                Users.Add(newUser);
+
+                return newUser;
+            }
 
             return null;
+
+
+            //if (ValidateUsername(username))
+            //{
+            //    User newClient = new(username, password, country);
+            //    Users.Add(newClient);
+
+            //    return newClient;
+            //}
+
+
+
+            //return null;
 
         }
 
@@ -68,19 +156,22 @@
         }
 
 
-        //metod som validerar användarnamn
+        //Metod: Kollar om användar namn inte är taget
         public static bool ValidateUsername(string username)
         {
             bool isValidUsername = true;
 
+            //loopar genom users listan för att se om användarnamnet är taget
             foreach (var user in Users)
             {
                 if (user.Username == username)
                 {
+
+                    //om namnet är redan taget så kommer valid namn är retunera false
                     isValidUsername = false;
                 }
             }
-
+            //annars sant
             return isValidUsername;
         }
 

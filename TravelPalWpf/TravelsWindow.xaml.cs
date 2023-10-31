@@ -17,148 +17,61 @@ namespace TravelPalWpf
             InitializeComponent();
 
 
-            ////om användaren är typen User
-            //if (UserManager.SignedInUser!.GetType() == typeof(User))
-            //{
 
-            //    User signedInClient = (User)UserManager.SignedInUser;
-
-            //    //sätter text box till logged in users
-            //    txtLoggedInUser.Text = signedInClient.Username;
-
-            //    //List<Travel> Travels = signedInClient.Travels;
-
-
-
-            //    if (signedInClient.Travels.Count == 0)
-            //    {
-
-
-            //        //skapa två default resor:
-            //        Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
-            //        Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
-
-
-
-            //        //Skapar listviewitem för första default resan:
-            //        ListViewItem item1 = new ListViewItem();
-            //        item1.Content = defaultTravelOne.GetInfo();
-            //        item1.Tag = defaultTravelOne;
-            //        lstTravels.Items.Add(item1);
-
-
-            //        // Skapar ListViewItem för andra default resan:
-            //        ListViewItem item2 = new ListViewItem();
-            //        item2.Content = defaultTravelTwo.GetInfo();
-            //        item2.Tag = defaultTravelTwo;
-            //        lstTravels.Items.Add(item2);
-
-
-            //        foreach (Travel travel in TravelManager.Travels)
-            //        {
-            //            ListViewItem item = new ListViewItem();
-            //            item.Content = travel.GetInfo();
-            //            item.Tag = travel;
-            //            lstTravels.Items.Add(item);
-            //        }
-
-            //    }
-
-
-
-            //    //testa lägg in default resorna här
-            //}
-            //else if (UserManager.SignedInUser is Admin)
-
-            //{
-            //    Admin signedInClient = (Admin)UserManager.SignedInUser;
-
-            //    txtLoggedInUser.Text = signedInClient.Username;
-
-
-            //    if (UserManager.SignedInUser is Admin)
-            //    {
-
-
-            //        //skapa två default resor:
-            //        Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
-            //        Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
-
-
-
-            //        //Skapar listviewitem för första default resan:
-            //        ListViewItem item1 = new ListViewItem();
-            //        item1.Content = defaultTravelOne.GetInfo();
-            //        item1.Tag = defaultTravelOne;
-            //        lstTravels.Items.Add(item1);
-
-
-            //        // Skapar ListViewItem för andra default resan:
-            //        ListViewItem item2 = new ListViewItem();
-            //        item2.Content = defaultTravelTwo.GetInfo();
-            //        item2.Tag = defaultTravelTwo;
-            //        lstTravels.Items.Add(item2);
-
-
-            //        foreach (Travel travel in TravelManager.Travels)
-            //        {
-            //            ListViewItem item = new ListViewItem();
-            //            item.Content = travel.GetInfo();
-            //            item.Tag = travel;
-            //            lstTravels.Items.Add(item);
-            //        }
-
-
-
-
-            //    }
-
-            //}
-
-
-
-
-
-
-            //// Kolla vilken användare som är inloggad
-            User signedInUser = (User)UserManager.SignedInUser;
-
-            //visar användarens användarnamn
-            txtLoggedInUser.Text = signedInUser.Username;
-
-            //// Hämta dens resor
-            List<Travel> Travels = signedInUser.Travels;
-
-
-
-            //// Lägg till dens resor i ListView:en
-
-
-
-            foreach (Travel travel in Travels)
+            //kolla vilken användare som är inne
+            if (UserManager.SignedInUser is User signedInUser)
             {
-                ListViewItem item = new ListViewItem();
-                item.Content = travel.GetInfo();
-                item.Tag = travel;
-                lstTravels.Items.Add(item);
+                //visar User användarens namn i text box
+                txtLoggedInUser.Text = signedInUser.Username;
+
+                // Check if the user is new (doesn't have any travels)
+                if (signedInUser.Travels != null && signedInUser.Travels.Count > 0)
+                {
+                    foreach (Travel travel in signedInUser.Travels)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Content = travel.GetInfo();
+                        item.Tag = travel;
+                        lstTravels.Items.Add(item);
+                    }
+                }
+
+
+                //hämtar dens resor
+                List<Travel> travels = signedInUser.Travels;
+
+
+                //lägger till resor i listview
+                //foreach (Travel travel in travels)
+                //{
+                //    ListViewItem item = new ListViewItem();
+                //    item.Content = travel.GetInfo();
+                //    item.Tag = travel;
+                //    lstTravels.Items.Add(item);
+                //}
+            }//om det är admin som är inloggad:
+            else if (UserManager.SignedInUser is Admin signedInAdmin)
+            {
+                // Code for a signed-in Admin
+                txtLoggedInUser.Text = signedInAdmin.Username;
+
+                //hämtar dens resor
+                List<Travel> travels = signedInAdmin.Travels;
+
+                //lägger till resor i listview
+                foreach (Travel travel in travels)
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.Content = travel.GetInfo();
+
+                    item.Tag = travel;
+                    lstTravels.Items.Add(item);
+                }
             }
 
-            //skapa två default resor:
-            Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
-            Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
-
-            //Skapar listviewitem för första default resan:
-            ListViewItem item1 = new ListViewItem();
-            item1.Content = defaultTravelOne.GetInfo();
-            item1.Tag = defaultTravelOne;
-            lstTravels.Items.Add(item1);
 
 
-            // Skapar ListViewItem för andra default resan:
-            ListViewItem item2 = new ListViewItem();
-            item2.Content = defaultTravelTwo.GetInfo();
-            item2.Tag = defaultTravelTwo;
-            lstTravels.Items.Add(item2);
+
 
 
 

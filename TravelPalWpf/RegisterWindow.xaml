@@ -61,7 +61,7 @@
         <Label 
             Grid.Column="1"
             Grid.Row="5"
-            Content="Destination:"
+            Content="Country:"
             FontSize="16"
             Padding="0"
             VerticalAlignment="Center"

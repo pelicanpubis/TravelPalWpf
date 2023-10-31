@@ -13,6 +13,13 @@
             : base(destination, country, travellers, kindOfTrip, meetingDetails)
         {
             AllInclusive = allInclusive;
+            //behöver jag sett:a resten av properties?
+
+        }
+
+        public Vacation()
+        {
+
         }
 
         //metod som förmodligen ska retunera en sträng och printa ut all info om resan

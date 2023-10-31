@@ -69,7 +69,7 @@
             </ListView.View>
         </ListView>-->
 
-        <ListView VerticalContentAlignment="Center" HorizontalContentAlignment="Center" x:Name = "lstTravels" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">
+        <ListView  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name = "lstTravels" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">
         </ListView>
     </Grid>
 </Window>
