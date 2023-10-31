@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 
@@ -17,33 +16,148 @@ namespace TravelPalWpf
             InitializeComponent();
 
 
-            //// Kolla vilken användare som är inloggad
-            User signedInUser = (User)UserManager.SignedInUser;
-
-            //visar användarens användarnamn
-            txtLoggedInUser.Text = signedInUser.Username;
-
-            //// Hämta dens resor
-            List<Travel> Travels = signedInUser.Travels;
-
-
-
-            //// Lägg till dens resor i ListView:en
-
-
-
-            foreach (Travel travel in Travels)
+            //om användaren är typen User
+            if (UserManager.SignedInUser!.GetType() == typeof(User))
             {
-                ListViewItem item = new ListViewItem();
-                item.Content = travel.GetInfo();
-                item.Tag = travel;
-                lstTravels.Items.Add(item);
+
+                User signedInClient = (User)UserManager.SignedInUser;
+
+                //sätter text box till logged in users
+                txtLoggedInUser.Text = signedInClient.Username;
+
+                //List<Travel> Travels = signedInClient.Travels;
+
+
+
+                if (signedInClient.Travels.Count == 0)
+                {
+
+
+                    //skapa två default resor:
+                    Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
+                    Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
+
+
+
+                    //Skapar listviewitem för första default resan:
+                    ListViewItem item1 = new ListViewItem();
+                    item1.Content = defaultTravelOne.GetInfo();
+                    item1.Tag = defaultTravelOne;
+                    lstTravels.Items.Add(item1);
+
+
+                    // Skapar ListViewItem för andra default resan:
+                    ListViewItem item2 = new ListViewItem();
+                    item2.Content = defaultTravelTwo.GetInfo();
+                    item2.Tag = defaultTravelTwo;
+                    lstTravels.Items.Add(item2);
+
+
+                    foreach (Travel travel in TravelManager.Travels)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Content = travel.GetInfo();
+                        item.Tag = travel;
+                        lstTravels.Items.Add(item);
+                    }
+
+                }
+
+
+
+                //testa lägg in default resorna här
+            }
+            else if (UserManager.SignedInUser is Admin)
+
+            {
+                Admin signedInClient = (Admin)UserManager.SignedInUser;
+
+                txtLoggedInUser.Text = signedInClient.Username;
+
+
+                if (UserManager.SignedInUser is Admin)
+                {
+
+
+                    //skapa två default resor:
+                    Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
+                    Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
+
+
+
+                    //Skapar listviewitem för första default resan:
+                    ListViewItem item1 = new ListViewItem();
+                    item1.Content = defaultTravelOne.GetInfo();
+                    item1.Tag = defaultTravelOne;
+                    lstTravels.Items.Add(item1);
+
+
+                    // Skapar ListViewItem för andra default resan:
+                    ListViewItem item2 = new ListViewItem();
+                    item2.Content = defaultTravelTwo.GetInfo();
+                    item2.Tag = defaultTravelTwo;
+                    lstTravels.Items.Add(item2);
+
+
+                    foreach (Travel travel in TravelManager.Travels)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item.Content = travel.GetInfo();
+                        item.Tag = travel;
+                        lstTravels.Items.Add(item);
+                    }
+
+
+
+
+                }
+
             }
 
 
 
 
 
+
+            ////// Kolla vilken användare som är inloggad
+            //User signedInUser = (User)UserManager.SignedInUser;
+
+            ////visar användarens användarnamn
+            //txtLoggedInUser.Text = signedInUser.Username;
+
+            ////// Hämta dens resor
+            //List<Travel> Travels = signedInUser.Travels;
+
+
+
+            ////// Lägg till dens resor i ListView:en
+
+
+
+            //foreach (Travel travel in Travels)
+            //{
+            //    ListViewItem item = new ListViewItem();
+            //    item.Content = travel.GetInfo();
+            //    item.Tag = travel;
+            //    lstTravels.Items.Add(item);
+            //}
+
+            ////skapa två default resor:
+            //Travel defaultTravelOne = new Travel("Malmö", Country.Sweden, 1, KindOfTrip.WorkTrip, "work");
+            //Travel defaultTravelTwo = new Travel("Köpenhamn", Country.Denmark, 1, KindOfTrip.Vacation, "vacation");
+
+            ////Skapar listviewitem för första default resan:
+            //ListViewItem item1 = new ListViewItem();
+            //item1.Content = defaultTravelOne.GetInfo();
+            //item1.Tag = defaultTravelOne;
+            //lstTravels.Items.Add(item1);
+
+
+            //// Skapar ListViewItem för andra default resan:
+            //ListViewItem item2 = new ListViewItem();
+            //item2.Content = defaultTravelTwo.GetInfo();
+            //item2.Tag = defaultTravelTwo;
+            //lstTravels.Items.Add(item2);
 
 
 
@@ -67,20 +181,25 @@ namespace TravelPalWpf
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
 
+
+
             //om användaren inte har valt en resa att radera men inte valt någonting
             if (lstTravels != null)
 
             {
-                ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
-                if (selectedItem != null)
+
+                if (lstTravels.SelectedItem != null)
                 {
+                    ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
                     Travel selectedTravel = (Travel)selectedItem.Tag;
 
-                    //skapar användare
-                    User signedInUser = UserManager.SignedInUser as User;
-                    //tar bort användarens resa från reselistan
-                    signedInUser.Travels.Remove(selectedTravel);
-                    //tar bort resan från listview
+                    // Remove the travel from the signed-in user's travels
+                    if (UserManager.SignedInUser is User signedInUser)
+                    {
+                        signedInUser.Travels.Remove(selectedTravel);
+                    }
+
+                    // Remove the item from the list view
                     lstTravels.Items.Remove(selectedItem);
                 }
 
@@ -91,6 +210,34 @@ namespace TravelPalWpf
                     MessageBox.Show("Please select a travel from the list before clicking 'Remove'.");
 
                 }
+
+
+
+
+                ////om användaren inte har valt en resa att radera men inte valt någonting
+                //if (lstTravels != null)
+
+                //{
+                //    ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
+                //    if (selectedItem != null)
+                //    {
+                //        Travel selectedTravel = (Travel)selectedItem.Tag;
+
+                //        //skapar användare
+                //        User signedInUser = UserManager.SignedInUser as User;
+                //        //tar bort användarens resa från reselistan
+                //        signedInUser.Travels.Remove(selectedTravel);
+                //        //tar bort resan från listview
+                //        lstTravels.Items.Remove(selectedItem);
+                //    }
+
+                //    else
+                //    {
+
+
+                //        MessageBox.Show("Please select a travel from the list before clicking 'Remove'.");
+
+                //    }
 
             }
         }
@@ -128,14 +275,10 @@ namespace TravelPalWpf
         {
 
             string travelPalInfo = @"
-- Add, remove, and view trip details.
-- Easily identify all-inclusive vacations.
-- Organize work trips with meeting details.
-";
+           - Add, remove, and view trip details.
+           - Easily identify all-inclusive vacations.
+           - Organize work trips with meeting details.";
             MessageBox.Show(travelPalInfo);
-
-
-            //MessageBox.Show("Travel Pal: Your Travel Manager\r\n\r\nAdd, remove, and view trip details.\r\nEasily identify all-inclusive vacations.\r\nOrganize work trips with meeting details.");
 
 
 

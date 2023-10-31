@@ -7,8 +7,8 @@
 
         public static List<IUser> Users { get; private set; } = new()
              {
-            new User("a", "a",Country.Sweden),
-            new Admin("Admin", "password",Country.Afghanistan)
+            new User("user", "password",Country.Sweden),
+            new Admin("admin", "password",Country.Afghanistan)
 
         };
         public static IUser? SignedInUser { get; private set; }
@@ -55,7 +55,9 @@
         //metod som ska ta bort från user from listan.
         public static void RemoveUser(IUser user)
         {
-            //logikk
+            //{
+            //    Users.Remove(user);
+            //}
         }
 
         //uppdatera användernamn om det nya användarnamnet är true?

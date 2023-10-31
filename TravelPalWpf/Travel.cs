@@ -29,6 +29,7 @@
             Travellers = travellers;
             KindOfTrip = kindOfTrip;
             MeetingDetails = meetingDetails;
+            //MeetingDetails = meetingDetails;
 
             // PackingList = packingList;
             //StartDate = startDate;
