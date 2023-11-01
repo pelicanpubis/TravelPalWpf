@@ -14,12 +14,6 @@ namespace TravelPalWpf
         //Konstruktor
         //när en instans av USER skapas så skapas en tom travelslista
 
-
-        public User()
-        {
-
-        }
-
         public User(string username, string password, Country location) //behövs denna?
         {
 
@@ -29,15 +23,6 @@ namespace TravelPalWpf
             //Travels = new List<Travel>(); //behöver man sätta listan i construktorn?
 
 
-        }
-
-        //denna metoden sätter usernaame?
-        public void IUser(string username, string password, Country location) //lägga till list?
-        {
-            Username = username;
-            Password = password;
-            Location = location;
-            Travels = new List<Travel>();
         }
     }
 

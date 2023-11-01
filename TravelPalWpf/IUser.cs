@@ -12,8 +12,8 @@
 
         //metod som andra subklasser ska använda som använder sig utav interface properties
         //ska den vara void? Eller iuser
-        void IUser(string username, string password, Country location);  //ändra till setuser? makes more sense?
-                                                                         // IUser CreateUser(string username, string password, Country location);
+        //void IUser(string username, string password, Country location);  //ändra till setuser? makes more sense?
+        //                                                                 // IUser CreateUser(string username, string password, Country location);
 
 
         //public void IUser(string username, string password, Country location)

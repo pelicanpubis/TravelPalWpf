@@ -9,58 +9,18 @@
         {
             //vi kallar på en tom konstruktor så att vi kan bygga vår egna user
             
-            new Admin
-            {
-                Password = "password",
-                Username = "admin",
-                Location = Country.France,
-                Travels = new List<Travel>()
-                {
-
-                new WorkTrip
-            {
-                Destination = "Buenos Aires",
-                Country = Country.Argentina,
-                Travellers = 1,
-                KindOfTrip = KindOfTrip.WorkTrip,
-                MeetingDetails = "Work in Argentina"
-
-
-                },
-
-                new Vacation
-            {
-                Destination = "Nice",
-                Country = Country.France,
-                Travellers = 2,
-                KindOfTrip = KindOfTrip.Vacation,
-                AllInclusive = true
-            }
-
-
-            },
-
-
-
-
-            },
-            new User()
+            new Admin("admin", "password", Country.France),
+            new User("user", "password", Country.Sweden)
              {
-                Username = "user",
-                Password= "password",
-                Location = Country.Sweden,
                 Travels = new List<Travel>()
                 {
-
-
                 new WorkTrip ()
                 {
                     Destination = "Kabul",
                     Country = Country.Afghanistan,
                     Travellers = 1,
                     KindOfTrip = KindOfTrip.WorkTrip,
-                    MeetingDetails = "sa,sd"
-
+                    MeetingDetails = "sa,sd",
                 },
                 new Vacation()
                 {
@@ -78,19 +38,6 @@
 
         };
 
-
-
-
-
-
-
-
-
-
-
-        //new Admin("admin", "password",Country.Afghanistan)
-
-
         public static IUser? SignedInUser { get; private set; }
 
         //denna metoden registrerar en ny user
@@ -101,11 +48,8 @@
             if (ValidateUsername(username))
             {
                 //om det är valid så skapas en ny user objekt och initialiserar dens properties
-                User newUser = new User
+                User newUser = new User(username, password, country)
                 {
-                    Username = username,
-                    Password = password,
-                    Location = country,
                     Travels = new List<Travel>()
                 };
                 //lägger till den nya user i users listan
@@ -117,17 +61,6 @@
             return null;
 
 
-            //if (ValidateUsername(username))
-            //{
-            //    User newClient = new(username, password, country);
-            //    Users.Add(newClient);
-
-            //    return newClient;
-            //}
-
-
-
-            //return null;
 
         }
 
@@ -147,6 +80,9 @@
             //    Users.Remove(user);
             //}
         }
+
+
+
 
         //uppdatera användernamn om det nya användarnamnet är true?
         public static bool UpdateUsername(IUser user, string newUsername)
@@ -193,10 +129,37 @@
             return false;
         }
 
-        //public static void SignOutUser()
-        //{
-        //    SignedInUser = null;
-        //}
+        public static void SignOutUser() //kallas på sign out knappen
+        {
+            SignedInUser = null;
+        }
+
+        public static List<Travel> GetAllUsersTravels()
+        {
+            // Skapar en lista för att samla alla users resor
+            List<Travel> allTravels = new List<Travel>();
+
+
+            // Loopa igenom varje användare i Users listan
+            foreach (var user in Users)
+            {
+
+                if (user is User userAsUser)
+                {
+                    {
+                        // Lägg till alla resor från användaren i listan allTravels
+                        allTravels.AddRange(userAsUser.Travels);
+                    }
+                }
+            }
+
+            return allTravels;
+        }
+
+
+
+
+
     }
 
 }

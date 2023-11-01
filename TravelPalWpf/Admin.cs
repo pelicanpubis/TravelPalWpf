@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace TravelPalWpf
+﻿namespace TravelPalWpf
 {
 
     //en klass som ärver interface från IUSER
@@ -10,17 +8,6 @@ namespace TravelPalWpf
         public string Username { get; set; }
         public string Password { get; set; }
         public Country Location { get; set; }
-        public List<Travel> Travels { get; set; }
-
-
-
-        // Country Location { get; set; }
-
-
-        public Admin()
-        {
-
-        }
 
 
         //konstruktor som instierar admins properties
@@ -29,15 +16,7 @@ namespace TravelPalWpf
             Username = username;
             Password = password;
             Location = location;
-
-        }
-
-        //skriv en metod som ska förmodlingen retunera username, passord och location?
-        public void IUser(string username, string password, Country location) //behövs denna?
-        {
-            Username = username;
-            Password = password;
-            Location = location;
+            // MeetingDetails = meetingDetails;
         }
     }
 }

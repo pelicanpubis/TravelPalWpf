@@ -41,40 +41,29 @@ namespace TravelPalWpf
                 List<Travel> travels = signedInUser.Travels;
 
 
-                //lägger till resor i listview
-                //foreach (Travel travel in travels)
-                //{
-                //    ListViewItem item = new ListViewItem();
-                //    item.Content = travel.GetInfo();
-                //    item.Tag = travel;
-                //    lstTravels.Items.Add(item);
-                //}
+
+
+
             }//om det är admin som är inloggad:
             else if (UserManager.SignedInUser is Admin signedInAdmin)
             {
                 // Code for a signed-in Admin
                 txtLoggedInUser.Text = signedInAdmin.Username;
 
-                //hämtar dens resor
-                List<Travel> travels = signedInAdmin.Travels;
+                // Retrieve all users' travels for the admin
+                List<Travel> adminTravels = new List<Travel>();
 
-                //lägger till resor i listview
-                foreach (Travel travel in travels)
+                adminTravels = UserManager.GetAllUsersTravels();
+
+                // Populate the lstTravels ListView with the retrieved data
+                foreach (Travel travel in adminTravels)
                 {
                     ListViewItem item = new ListViewItem();
                     item.Content = travel.GetInfo();
-
                     item.Tag = travel;
                     lstTravels.Items.Add(item);
                 }
             }
-
-
-
-
-
-
-
 
         }
 
@@ -94,26 +83,42 @@ namespace TravelPalWpf
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-
-
-
             //om användaren inte har valt en resa att radera men inte valt någonting
             if (lstTravels != null)
-
             {
-
                 if (lstTravels.SelectedItem != null)
                 {
                     ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
                     Travel selectedTravel = (Travel)selectedItem.Tag;
 
-                    // Remove the travel from the signed-in user's travels
-                    if (UserManager.SignedInUser is User signedInUser)
+                    if (UserManager.SignedInUser is User)
                     {
-                        signedInUser.Travels.Remove(selectedTravel);
+                        // Ta bort resan från sig själv
+
+                        User user = UserManager.SignedInUser as User;
+                        user.Travels.Remove(selectedTravel);
+                    }
+                    else if (UserManager.SignedInUser is Admin)
+                    {
+                        // Ta bort resan från rätt user
+
+                        foreach (var u in UserManager.Users)
+                        {
+                            if (u is User)
+                            {
+                                User user = (User)u;
+
+                                if (user.Travels.Contains(selectedTravel))
+                                {
+                                    // Ta bort resan från "backend:en"
+                                    user.Travels.Remove(selectedTravel);
+                                    break;
+                                }
+                            }
+                        }
                     }
 
-                    // Remove the item from the list view
+                    // Ta bort resan från UI:t
                     lstTravels.Items.Remove(selectedItem);
                 }
 
@@ -128,33 +133,12 @@ namespace TravelPalWpf
 
 
 
-                ////om användaren inte har valt en resa att radera men inte valt någonting
-                //if (lstTravels != null)
-
-                //{
-                //    ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
-                //    if (selectedItem != null)
-                //    {
-                //        Travel selectedTravel = (Travel)selectedItem.Tag;
-
-                //        //skapar användare
-                //        User signedInUser = UserManager.SignedInUser as User;
-                //        //tar bort användarens resa från reselistan
-                //        signedInUser.Travels.Remove(selectedTravel);
-                //        //tar bort resan från listview
-                //        lstTravels.Items.Remove(selectedItem);
-                //    }
-
-                //    else
-                //    {
-
-
-                //        MessageBox.Show("Please select a travel from the list before clicking 'Remove'.");
-
-                //    }
-
             }
+
+
         }
+
+
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
@@ -173,15 +157,13 @@ namespace TravelPalWpf
             }
 
 
-
-
-
         }
 
         private void btnSignOut_Click(object sender, RoutedEventArgs e) //loggar inte riktigt ut, utan är mer en tillbaka knapp
         {
             MainWindow mainWindow = new();
             mainWindow.Show();
+            UserManager.SignOutUser();
             Close();
         }
 

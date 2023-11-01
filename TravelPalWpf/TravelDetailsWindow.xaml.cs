@@ -12,6 +12,8 @@ namespace TravelPalWpf
             InitializeComponent();
 
 
+
+
             txtCity.Text = travelToShow.Destination;
             txtMeetingDetails.Text = travelToShow.MeetingDetails;
             txtDestinationCountry.Text = travelToShow.Country.ToString();
@@ -22,7 +24,7 @@ namespace TravelPalWpf
             {
                 txtMeetingDetails.Visibility = Visibility.Visible;
                 lblMeetingDetails.Visibility = Visibility.Visible;
-
+                txtMeetingDetails.Text = travelToShow.MeetingDetails;
 
             }
             else

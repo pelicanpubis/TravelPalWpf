@@ -14,9 +14,6 @@
 
         //public List<PackingListItem> PackingList { get; set; }
 
-        //public DateTime StartDate { get; set; } nice to have
-        //public DateTime EndDate { get; set; } nice to have
-        //public int TravelDays { get; set; } nice to have
 
 
 
@@ -29,11 +26,9 @@
             Travellers = travellers;
             KindOfTrip = kindOfTrip;
             MeetingDetails = meetingDetails;
-            //MeetingDetails = meetingDetails;
+
 
             // PackingList = packingList;
-            //StartDate = startDate;
-            //EndDate = endDate;
         }
 
         public Travel()
@@ -42,23 +37,16 @@
         }
 
 
-
-
-
         //en metod som retunerar en sträng av info om resan
         public virtual string GetInfo()
         {
+
+
+
             return "Destination: " + Destination + "\n" +
                    "Country: " + Country + "\n" +
                    "Number of Travellers: " + Travellers + "\n" + "Kind of Trip: " + KindOfTrip + "\n";
         }
 
-
-        ////en mentod som kalkylerar traveldays
-        //private int CalculateTravelDays()
-        //{
-        //    TimeSpan travelDuration = EndDate - StartDate;
-        //    return travelDuration.Days;
-        //}
     }
 }

@@ -26,10 +26,6 @@ namespace TravelPalWpf
 
             {
 
-                ///* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
-                //ListViewItem item = new(); //gör en ny klass //lagt till en
-                //item.Content = country.ToString(); //content är det som kommer att synas i combo boxen
-                //item.Tag = country;   //tag är en property med setter och getter
 
                 cbCountry.Items.Add(country);
 
@@ -53,12 +49,7 @@ namespace TravelPalWpf
             {
                 cbKindOfTrip.Items.Add(kindOfTrip);
 
-                ///* cbPrios.Items.Add(Priority.ToString()); *///för varje gång man loopar genum sina enums så lägger man till items i comboboxen
-                //ListViewItem item = new(); //gör en ny klass //lagt till en
-                //item.Content = kindOfTrip.ToString(); //content är det som kommer att synas i combo boxen
-                //item.Tag = kindOfTrip;   //tag är en property med setter och getter
 
-                //cbKindOfTrip.Items.Add(item);
             }
 
             cbKindOfTrip.SelectedIndex = 0;
@@ -148,15 +139,6 @@ namespace TravelPalWpf
                         signedInUser.Travels.Add(newVacation);
                     }
 
-                    else if (UserManager.SignedInUser is Admin signedInAdmin)
-
-
-                    {
-
-                        signedInAdmin.Travels.Add(newVacation);
-
-                    }
-
 
 
 
@@ -187,15 +169,6 @@ namespace TravelPalWpf
                         signedInUser.Travels.Add(newWorktrip);
                     }
 
-                    else if (UserManager.SignedInUser is Admin signedInAdmin)
-
-
-                    {
-
-                        signedInAdmin.Travels.Add(newWorktrip);
-
-                    }
-
 
 
                 }
@@ -209,9 +182,6 @@ namespace TravelPalWpf
 
 
         }
-
-
-
 
 
 
