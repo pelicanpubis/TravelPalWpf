@@ -5,7 +5,6 @@ namespace TravelPalWpf
     public static class TravelManager //ska denna klassen ha en konstruktor
     {
         //Properties: en property som är en lista, den håller olika travel objekt
-
         public static List<Travel> Travels { get; set; } = new(); // sätta den till new?
 
 

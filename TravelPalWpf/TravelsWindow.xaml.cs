@@ -11,11 +11,9 @@ namespace TravelPalWpf
     public partial class TravelsWindow : Window
     {
 
-        // static List<Travel> Travels = new();
         public TravelsWindow()
         {
             InitializeComponent();
-
 
 
             //kolla vilken användare som är inne
@@ -42,13 +40,13 @@ namespace TravelPalWpf
 
 
 
-
-
             }//om det är admin som är inloggad:
             else if (UserManager.SignedInUser is Admin signedInAdmin)
             {
                 // Code for a signed-in Admin
                 txtLoggedInUser.Text = signedInAdmin.Username;
+
+                btnAddTravel.IsEnabled = false;
 
                 // Retrieve all users' travels for the admin
                 List<Travel> adminTravels = new List<Travel>();
@@ -62,6 +60,7 @@ namespace TravelPalWpf
                     item.Content = travel.GetInfo();
                     item.Tag = travel;
                     lstTravels.Items.Add(item);
+
                 }
             }
 
@@ -124,13 +123,9 @@ namespace TravelPalWpf
 
                 else
                 {
-
-
                     MessageBox.Show("Please select a travel from the list before clicking 'Remove'.");
 
                 }
-
-
 
 
             }
@@ -142,12 +137,13 @@ namespace TravelPalWpf
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-
+            // checkar ett objekt är markerat i listan (lstTravels)
             if (lstTravels.SelectedItem != null)
             {
-                ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem;
-                Travel? selectedTravel = selectedItem!.Tag as Travel;
-                TravelDetailsWindow travelDetailsWindow = new(selectedTravel);
+
+                ListViewItem? selectedItem = lstTravels.SelectedItem as ListViewItem; // Hämta det markerade objektet som en ListViewItem
+                Travel? selectedTravel = selectedItem!.Tag as Travel;// Hämta resan som är associerad med det markerade objektet
+                TravelDetailsWindow travelDetailsWindow = new(selectedTravel);  // Skapa ett nytt fönster (TravelDetailsWindow) för att visa detaljer om den valda resan
                 travelDetailsWindow.Show();
                 Close();
             }
@@ -174,13 +170,33 @@ namespace TravelPalWpf
            - Add, remove, and view trip details.
            - Easily identify all-inclusive vacations.
            - Organize work trips with meeting details.";
-            MessageBox.Show(travelPalInfo);
+            // MessageBox.Show(travelPalInfo);
 
+            // Create a custom window with a title
+            Window infoWindow = new Window
+            {
+                Title = "Travel Info", // Titlen på fönstret
+                Content = new TextBlock { Text = travelPalInfo }, // lägger string info
+                Width = 300,
+                Height = 200,
+                ResizeMode = ResizeMode.NoResize, // Íngen resizing
+                WindowStartupLocation = WindowStartupLocation.CenterScreen // Centrerar fönstret
+            };
+
+            infoWindow.ShowDialog();
+
+            // string travelPalInfo = @"
+            //- Add, remove, and view trip details.
+            //- Easily identify all-inclusive vacations.
+            //- Organize work trips with meeting details.";
+            //  MessageBox.Show(travelPalInfo);
 
 
         }
     }
 }
+
+
 
 
 

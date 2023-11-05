@@ -14,7 +14,7 @@
              {
                 Travels = new List<Travel>()
                 {
-                new WorkTrip ()
+                new WorkTrip ("Kabul", Country.Afghanistan, 1, "Working Stuff", KindOfTrip.WorkTrip)
                 {
                     Destination = "Kabul",
                     Country = Country.Afghanistan,
@@ -95,7 +95,6 @@
         //Metod: Kollar om användar namn inte är taget
         public static bool ValidateUsername(string username)
         {
-            bool isValidUsername = true;
 
             //loopar genom users listan för att se om användarnamnet är taget
             foreach (var user in Users)
@@ -104,11 +103,11 @@
                 {
 
                     //om namnet är redan taget så kommer valid namn är retunera false
-                    isValidUsername = false;
+                    return false;
                 }
             }
             //annars sant
-            return isValidUsername;
+            return true;
         }
 
         //metod som loggar in användaren

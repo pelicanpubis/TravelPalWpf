@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPalWpf"
         mc:Ignorable="d"
-               Title="Travels Window" Height="900" Width="900" Background="Pink" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="Travels Window" Height="700" Width="900" Background="Pink" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid>
         <!--Grid-->
@@ -14,14 +14,12 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+           
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+           
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="20"/>
@@ -36,14 +34,14 @@
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <!--Elements-->
-        <Label Grid.Row="7" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Logged in User:" FontSize="16" FontWeight="Bold"/>
-        <Label Grid.Row="8" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left"  Content="Added Travels:" FontSize="16" Margin="0,34,0,0"/>
-        <Label Grid.Row="8" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left"  Content="Country" FontSize="16" Margin="0,34,0,0"/>
+        <Label Grid.Row="3" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Content="Logged in User:" FontSize="16" FontWeight="Bold"/>
+        <Label Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left"  Content="Added Travels:" FontSize="16" Margin="0,34,0,0"/>
+        <Label Grid.Row="4" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Left"  Content="Country" FontSize="16" Margin="0,34,0,0"/>
 
 
         <TextBlock
             x:Name = "txtLoggedInUser"
-            Grid.Row="7"
+            Grid.Row="3"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Left"
@@ -52,24 +50,13 @@
             Height="20"
             Background="BlanchedAlmond" Margin="148,26,0,0"/>
 
-        <Button x:Name = "btnAddTravel" Grid.Column="4" Grid.Row="9" Width="140" Content="Add Travel" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnAddTravel_Click"/>
-        <Button x:Name = "btnRemove" Grid.Column="4" Grid.Row="11" Width="140" Content="Remove" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnRemove_Click" />
-        <Button x:Name = "btnDetails"  Grid.Column="4" Grid.Row="10" Width="140" Content="Show Details" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnDetails_Click" />
-        <Button x:Name = "btnInfo" Grid.Column="4" Grid.Row="12" Width="140" Content="Info" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnInfo_Click"/>
-        <Button x:Name = "btnSignOut" Grid.Column="4" Grid.Row="13" Width="140" Content="Sign Out" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnSignOut_Click"/>
+        <Button x:Name = "btnAddTravel" Grid.Column="4" Grid.Row="5" Width="140" Content="Add Travel" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnAddTravel_Click"/>
+        <Button x:Name = "btnRemove" Grid.Column="4" Grid.Row="6" Width="140" Content="Remove" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnRemove_Click" />
+        <Button x:Name = "btnDetails"  Grid.Column="4" Grid.Row="7" Width="140" Content="Show Details" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnDetails_Click" />
+        <Button x:Name = "btnInfo" Grid.Column="4" Grid.Row="8" Width="140" Content="Info" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnInfo_Click"/>
+        <Button x:Name = "btnSignOut" Grid.Column="4" Grid.Row="9" Width="140" Content="Sign Out" FontSize="16" Margin="15" BorderBrush="Black" FontWeight="Bold" Click="btnSignOut_Click"/>
 
-
-        <!--<ListView x:Name="lstTravels" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Destination" Width="200" DisplayMemberBinding="{Binding Destination}" />
-                    <GridViewColumn Header="Country" Width="100" DisplayMemberBinding="{Binding Country}" />
-                    <GridViewColumn Header="Number of Travellers" Width="150" DisplayMemberBinding="{Binding Travellers}" />
-                </GridView>
-            </ListView.View>
-        </ListView>-->
-
-        <ListView  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name = "lstTravels" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">
+        <ListView  VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Name = "lstTravels" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Grid.RowSpan="5" BorderBrush="Black" SelectionChanged="lstTravels_SelectionChanged">
         </ListView>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 
 namespace TravelPalWpf
 {
@@ -21,12 +22,8 @@ namespace TravelPalWpf
 
             {
 
-
                 cbCountry.Items.Add(country);
-
-
             }
-
 
 
             cbCountry.SelectedIndex = 0;
@@ -34,52 +31,61 @@ namespace TravelPalWpf
 
         private void btnSignUp_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Refactor these to clear UI method
-            warnUsername.Visibility = Visibility.Hidden;
-            warnPassword.Visibility = Visibility.Hidden;
-
-            // Läsa våra inputs
-            string username = txtUsername.Text.Trim();
-            string password = txtPassword.Password.Trim();
-            Country selectedCountryItem = (Country)cbCountry.SelectedItem;
-
-
-            //kollar med validateuser metoden om username är taget
-            if (!UserManager.ValidateUsername(username))
+            try
             {
-                // Visar varningsrute om användar namn inte är taget
-                MessageBox.Show("Username is already taken. Please choose a different username.");
-                return;
+                // TODO: Refactor these to clear UI method
+                warnUsername.Visibility = Visibility.Hidden;
+                warnPassword.Visibility = Visibility.Hidden;
+
+                // Läsa våra inputs
+                string username = txtUsername.Text.Trim();
+                string password = txtPassword.Password.Trim();
+                Country selectedCountryItem = (Country)cbCountry.SelectedValue;
+
+
+                //kollar med validateuser metoden om username är taget
+                if (!UserManager.ValidateUsername(username))
+                {
+                    // Visar varningsrute om användar namn inte är taget
+                    MessageBox.Show("Username is already taken. Please choose a different username.");
+                    return;
+                }
+
+                // Checka alla inputs
+                if (username == "")
+                {
+                    warnUsername.Visibility = Visibility.Visible;
+                    return;
+                }
+
+                if (password == "")
+                {
+                    warnPassword.Visibility = Visibility.Visible;
+                    return;
+                }
+
+                if (username != "" && password != "" && cbCountry.SelectedIndex != 0)
+                {
+                    // Skapa en user
+                    //  User newUser = new User(username, password);
+
+                    User newUser = UserManager.RegisterUser(username, password, selectedCountryItem);
+
+                    MainWindow mainWindow = new();
+                    mainWindow.Show();
+                    Close();
+
+                }
+            }
+            catch (InvalidCastException ex)
+            {
+                MessageBox.Show("Please select a country");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong");
             }
 
-            // Checka alla inputs
-            if (username == "")
-            {
-                warnUsername.Visibility = Visibility.Visible;
-            }
-
-            if (password == "")
-            {
-                warnPassword.Visibility = Visibility.Visible;
-            }
-
-            if (username != "" && password != "" && selectedCountryItem != 0)
-            {
-                // Skapa en user
-                //  User newUser = new User(username, password);
-
-                User newUser = UserManager.RegisterUser(username, password, selectedCountryItem);
-
-
-
-
-
-
-                MainWindow mainWindow = new();
-                mainWindow.Show();
-                Close();
-
-            }
         }
     }
 }
