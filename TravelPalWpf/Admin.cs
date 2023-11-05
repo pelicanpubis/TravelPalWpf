@@ -16,7 +16,6 @@
             Username = username;
             Password = password;
             Location = location;
-            // MeetingDetails = meetingDetails;
         }
     }
 }

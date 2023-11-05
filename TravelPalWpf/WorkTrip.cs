@@ -4,9 +4,7 @@
     {
         public string MeetingDetails { get; set; }
 
-        //public WorkTrip()
-        //{
-        //}
+
         public WorkTrip(string destination, Country country, int travellers, string meetingDetails, KindOfTrip kindOfTrip)
             : base(destination, country, travellers, kindOfTrip, meetingDetails)
         {
@@ -14,11 +12,6 @@
         }
 
 
-        //public WorkTrip(string destination, Country country, int travellers, List<PackingListItem> packingList, string meetingDetails)
-        //    : base(destination, country, travellers, packingList)
-        //{
-        //    MeetingDetails = meetingDetails;
-        //}
 
 
         //metod som ska returnera en sträng om work trip

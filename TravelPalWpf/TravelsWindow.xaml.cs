@@ -170,9 +170,9 @@ namespace TravelPalWpf
            - Add, remove, and view trip details.
            - Easily identify all-inclusive vacations.
            - Organize work trips with meeting details.";
-            // MessageBox.Show(travelPalInfo);
 
-            // Create a custom window with a title
+
+            // Skapar ett info window
             Window infoWindow = new Window
             {
                 Title = "Travel Info", // Titlen på fönstret
@@ -185,11 +185,6 @@ namespace TravelPalWpf
 
             infoWindow.ShowDialog();
 
-            // string travelPalInfo = @"
-            //- Add, remove, and view trip details.
-            //- Easily identify all-inclusive vacations.
-            //- Organize work trips with meeting details.";
-            //  MessageBox.Show(travelPalInfo);
 
 
         }

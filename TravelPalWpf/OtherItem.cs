@@ -7,13 +7,11 @@
 
         //properties
         public string Name { get; set; } //namn på item
-        //public int Quantity { get; set; } //antal items
 
         //constructor som sätter properties
         public OtherItem(string name)
         {
             Name = name;
-            //Quantity = quantity; nice to have
         }
 
 

@@ -20,7 +20,6 @@ namespace TravelPalWpf
             Username = username;
             Password = password;
             Location = location;
-            //Travels = new List<Travel>(); //behöver man sätta listan i construktorn?
 
 
         }
